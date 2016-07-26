@@ -114,6 +114,7 @@ class Adafruit_8x8matrix : public Adafruit_LEDBackpack, public Adafruit_GFX {
   Adafruit_8x8matrix(void);
 
   void drawPixel(int16_t x, int16_t y, uint16_t color);
+  void setup();
 
  private:
 };
@@ -139,6 +140,7 @@ class Adafruit_7segment : public Adafruit_LEDBackpack {
   Adafruit_7segment(void);
   size_t write(uint8_t c);
 
+  void setup();
   void print(char, int = BYTE);
   void print(unsigned char, int = BYTE);
   void print(int, int = DEC);

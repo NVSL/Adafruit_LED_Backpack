@@ -388,6 +388,9 @@ void Adafruit_8x16minimatrix::drawPixel(int16_t x, int16_t y, uint16_t color) {
 
 Adafruit_8x8matrix::Adafruit_8x8matrix(void) : Adafruit_GFX(8, 8) {
 }
+void Adafruit_8x8matrix::setup() {
+  this->begin(0x70);
+}
 
 void Adafruit_8x8matrix::drawPixel(int16_t x, int16_t y, uint16_t color) {
   if ((y < 0) || (y >= 8)) return;
@@ -663,6 +666,10 @@ void Adafruit_7segment::printFloat(double n, uint8_t fracDigits, uint8_t base)
     // clear remaining display positions
     while(displayPos >= 0) writeDigitRaw(displayPos--, 0x00);
   }
+}
+
+void Adafruit_7segment::setup() {
+  this->begin(0x70);
 }
 
 void Adafruit_7segment::printError(void) {
