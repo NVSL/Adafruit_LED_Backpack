@@ -138,7 +138,6 @@ class Adafruit_BicolorMatrix : public Adafruit_LEDBackpack, public Adafruit_GFX 
 class Adafruit_7segment : public Adafruit_LEDBackpack {
  public:
   Adafruit_7segment(void);
-  void setup() {}
   size_t write(uint8_t c);
 
   void setup();
