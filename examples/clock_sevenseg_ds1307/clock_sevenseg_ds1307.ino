@@ -18,8 +18,7 @@
 // Written by Tony DiCola for Adafruit Industries.
 // Released under a MIT license: https://opensource.org/licenses/MIT
 #include <Wire.h>
-#include "Adafruit_LEDBackpack.h"
-#include "Adafruit_GFX.h"
+#include "Gadgetron.h"
 #include "RTClib.h"
 
 
