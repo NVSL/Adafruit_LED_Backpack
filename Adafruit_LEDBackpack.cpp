@@ -470,7 +470,11 @@ void Adafruit_BicolorMatrix::drawPixel(int16_t x, int16_t y, uint16_t color) {
 /******************************* 7 SEGMENT OBJECT */
 
 Adafruit_7segment::Adafruit_7segment(void) {
-  position = 0;
+#ifdef GTRON_GENERATE
+     GtronGenerator::add_component(get_spec());
+#else
+     position = 0;
+#endif
 }
 
 void Adafruit_7segment::print(unsigned long n, int base)

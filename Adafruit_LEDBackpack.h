@@ -26,10 +26,10 @@
  #include "WProgram.h"
 #endif
 
-
- #include <Wire.h>
-
+#include <Wire.h>
 #include "Adafruit_GFX.h"
+
+#include "GtronGenerate.h"
 
 #define LED_ON 1
 #define LED_OFF 0
@@ -184,7 +184,8 @@ class Adafruit_BicolorMatrix : public Adafruit_LEDBackpack, public Adafruit_GFX 
  * explicitly update the display by calling \p writeDisplay(), otherwise, you
  * won't see the effect of your changes.
  */
-class Adafruit_7segment : public Adafruit_LEDBackpack {
+template<class COLOR>
+class Adafruit_7segment_tmpl : public Adafruit_LEDBackpack {
  public:
 
   /**
@@ -193,6 +194,14 @@ class Adafruit_7segment : public Adafruit_LEDBackpack {
    * If you use the sketch that came with your robot, you won't need call this.
    */
   Adafruit_7segment();
+
+#ifdef GTRON_GENERATE
+  std::string get_spec() {
+       std::stringstream s;
+       s << "<component progname=\"" << "name" << "\" type=\"" << "Adafruit-7seg-backpack-" << COLOR::get_color() << "\">";
+       return s.str();
+  }
+#endif
 
 #ifndef GTRON_ARDUINO_SKIP
   size_t write(uint8_t c);
@@ -263,5 +272,7 @@ class Adafruit_7segment : public Adafruit_LEDBackpack {
  private:
   uint8_t position;
 };
+typedef Adafruit_7segment_tmpl<RED> Adafruit_7segment;
+
 #endif // Adafruit_LEDBackpack_h
 
